@@ -21,7 +21,7 @@ Laboratório de **números primos**, **Crivo de Eratóstenes** e **fatoração**
 
 ## Página web (GitHub Pages)
 
-Abra a página publicada do repositório (depois de habilitar Pages em **Settings → Pages → Deploy from a branch → main → /(root) → Save**).
+[**Abrir a página publicada no GitHub Pages**](https://gabriel-silima.github.io/Atividade-A-Matematica-por-Tras-da-Seguranca-Digital/). Configuração: **Settings → Pages → Deploy from a branch → main → /(root)**.
 
 A página usa limite máximo de **200.000** para permanecer responsiva no navegador. Já abre com o exemplo da aula, limite 100, índices 4 e 7.
 
@@ -52,15 +52,20 @@ Execute primeiro 100, depois 100.000, depois 1.000.000. O arquivo original da au
 
 A implementação fornecida aqui evita o problema de criar uma lista com todos os ~50 milhões de primos de um limite de 1 bilhão só para mostrar os primeiros 80. Os índices são buscados diretamente no mapa, sem materializar a lista inteira.
 
-## Registro de resultados
+## Relatório e resultados finais (12/11/2026)
 
-Preencha **somente com medidas realmente obtidas**:
+**Atividade prática concluída com dois experimentos confirmados pelo aluno.** O terceiro experimento é opcional e não foi executado ou confirmado nesta entrega.
 
-| Teste | Limite | Índice P | Índice Q | P | Q | N | Tempo multiplicação (s) | Tempo fatoração (s) |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1 | 100 | 4 | 7 | 11 | 19 | 209 | a medir | a medir |
-| 2 | 100000 | 50 | 100 | a medir | a medir | a medir | a medir | a medir |
-| 3 | 1000000 | a escolher | a escolher | a medir | a medir | a medir | a medir | a medir |
+- **[Ler relatório técnico final](docs/RELATORIO_FINAL.md)** — identificação, metodologia, valores medidos, análise, conclusão e referências.
+- **[Conferir resultados registrados](resultados/registro-experimentos.md)** — tempos dos dois testes informados após as execuções no Windows; não são logs brutos.
+- **[Evidências e pendências](evidencias/README.md)** — distingue arquivos disponíveis dos logs e capturas ainda não anexados.
+
+| Teste | Limite | Índices P/Q | Primos P/Q | N | Multiplicação (s) | Fatoração (s) |
+| --- | ---: | --- | --- | ---: | ---: | ---: |
+| 01 | 100 | 4 / 7 | 11 / 19 | 209 | 0,000000200 | 0,000001800 |
+| 02 | 100.000 | 50 / 100 | 233 / 547 | 127.451 | 0,000000300 | 0,000002000 |
+
+**Fonte dos tempos:** medições relatadas pelo aluno no PowerShell. Arquivos originais `teste-01.txt` e `teste-02.txt` não foram enviados ao repositório; nenhuma captura ou log foi inventado.
 
 ### Perguntas para a análise final
 

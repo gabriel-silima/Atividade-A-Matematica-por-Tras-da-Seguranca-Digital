@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Laboratório interativo de números primos, Crivo de Eratóstenes e fatoração para a UC5 de Defesa Cibernética.">
+  <meta name="theme-color" content="#0b1121">
+  <title>CriptoPrimos | Matemática e Segurança Digital</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#conteudo">Pular para o laboratório</a>
+  <header class="topbar">
+    <a class="brand" href="#inicio"><span class="brand-symbol" aria-hidden="true">∑</span><span>CRIPTO<span class="accent">PRIMOS</span></span></a>
+    <nav aria-label="Navegação principal"><a href="#conceitos">Conceitos</a><a href="#laboratorio">Laboratório</a><a href="#analise">Análise</a></nav>
+    <span class="course">SENAC • UC5</span>
+  </header>
+  <main id="conteudo">
+    <section class="hero wrap" id="inicio">
+      <div class="eyebrow">CURSO TÉCNICO EM DEFESA CIBERNÉTICA · ATIVIDADE PRÁTICA</div>
+      <h1>A matemática por trás da <span class="accent">segurança digital.</span></h1>
+      <p class="lead">Explore números primos, execute o Crivo de Eratóstenes, multiplique dois primos e tente recuperar seus fatores. Tudo com resultados calculados no seu navegador.</p>
+      <div class="hero-actions"><a class="button primary" href="#laboratorio">Iniciar experimento →</a><a class="button ghost" href="https://www.youtube.com/watch?v=uJaPQGtYg6g" target="_blank" rel="noopener noreferrer">Vídeo: Crivo de Eratóstenes ↗</a></div>
+      <div class="hero-metrics"><div><strong>01</strong><span>Gerar primos</span></div><div><strong>02</strong><span>Escolher P e Q</span></div><div><strong>03</strong><span>Multiplicar</span></div><div><strong>04</strong><span>Fatorar</span></div></div>
+    </section>
+    <section class="wrap section" id="conceitos">
+      <div class="section-label">01 / FUNDAMENTOS</div>
+      <h2>O que estamos demonstrando?</h2>
+      <div class="concept-grid">
+        <article class="panel"><div class="symbol">P</div><h3>Números primos</h3><p>São inteiros maiores que 1 divisíveis apenas por 1 e por eles mesmos. O número 1 não é primo.</p><small>Ex.: 2, 3, 5, 7, 11, 13...</small></article>
+        <article class="panel"><div class="symbol">√</div><h3>Crivo de Eratóstenes</h3><p>Marca múltiplos de cada primo, começando em seu quadrado, até a raiz quadrada do limite.</p><small>Ex.: até 100, processamos 2, 3, 5 e 7.</small></article>
+        <article class="panel"><div class="symbol">×</div><h3>Multiplicação e fatoração</h3><p>Calcular N = P × Q é simples. Encontrar P e Q partindo apenas de N pode exigir muito mais trabalho.</p><small>Este é um modelo didático, não um RSA completo.</small></article>
+      </div>
+    </section>
+    <section class="wrap section" id="laboratorio">
+      <div class="section-label">02 / EXPERIMENTO</div><h2>Laboratório interativo</h2>
+      <p class="section-intro">Siga as etapas do roteiro. O índice começa em <strong>zero</strong>: índice 0 corresponde ao primo 2.</p>
+      <div class="lab-grid">
+        <div class="lab-main">
+          <article class="panel stage">
+            <div class="stage-title"><span class="num">1</span><div><h3>Construir o crivo</h3><p>Escolha um limite de 20 até 200.000 (versão web).</p></div></div>
+            <div class="controls"><label for="limite">Limite superior</label><input type="number" id="limite" min="20" max="200000" value="100" step="1"><button id="gerar" class="button primary" type="button">Gerar primos</button></div>
+            <div class="stats"><div><span>Primos encontrados</span><strong id="total">—</strong></div><div><span>Tempo do crivo</span><strong id="tempoCrivo">—</strong></div></div>
+            <p class="mini-label">Mapa dos números de 2 até 100 (ou até o limite escolhido)</p>
+            <div id="crivoGrid" class="crivo-grid" aria-label="Mapa dos números primos e compostos"></div>
+            <p class="legend"><span class="dot prime"></span>Primo <span class="dot composite"></span>Composto</p>
+            <details><summary>Ver amostra dos primeiros 80 primos</summary><div id="amostra" class="amostra"></div></details>
+          </article>
+          <article class="panel stage">
+            <div class="stage-title"><span class="num">2</span><div><h3>Selecionar P e Q</h3><p>Informe os índices dos primos encontrados.</p></div></div>
+            <div class="two-inputs"><label>Índice de P<input type="number" id="indiceP" value="4" min="0" step="1"></label><label>Índice de Q<input type="number" id="indiceQ" value="7" min="0" step="1"></label></div>
+            <p class="hint" id="faixa">Gere os primos para conhecer o intervalo permitido.</p>
+            <button id="executar" class="button primary full" type="button">Multiplicar e fatorar →</button>
+            <p id="erro" class="error" role="alert" aria-live="polite"></p>
+          </article>
+          <article class="panel stage" id="resultadoCard">
+            <div class="stage-title"><span class="num">3</span><div><h3>Resultado e tempos</h3><p>Os valores aparecerão depois do cálculo.</p></div></div>
+            <div class="result-row"><div><span>Primo P</span><strong id="primoP">—</strong></div><div class="operator">×</div><div><span>Primo Q</span><strong id="primoQ">—</strong></div><div class="operator">=</div><div><span>Produto N</span><strong id="produtoN">—</strong></div></div>
+            <p id="fatores" class="factor-line">Fatores recuperados: —</p>
+            <div class="timings"><div><span>Multiplicação (média por operação)</span><strong id="tempoMultiplicar">—</strong><div class="track"><div class="fill mul" id="barraMul"></div></div></div><div><span>Fatoração (execução única)</span><strong id="tempoFatorar">—</strong><div class="track"><div class="fill fact" id="barraFact"></div></div></div></div>
+            <p class="hint" id="comparacao">Tempos dependem do navegador e do computador. Comparação didática.</p>
+            <button class="button ghost" id="baixar" type="button" disabled>Baixar relatório (.txt)</button>
+          </article>
+        </div>
+        <aside class="side">
+          <article class="panel guide"><div class="section-label">ROTEIRO DA ATIVIDADE</div><h3>Procedimento</h3>
+            <ol><li>Execute o crivo e observe os primos.</li><li>Escolha dois índices pequenos.</li><li>Registre P, Q, N e os tempos.</li><li>Repita com índices maiores.</li><li>Compare seus próprios resultados.</li></ol>
+            <p class="notice">O PDF original utiliza limite de 1.000.000.000. Para essa escala, execute o programa Python localmente, com memória suficiente, em vez da página web.</p>
+          </article>
+          <article class="panel guide"><div class="section-label">EXPERIMENTO SUGERIDO</div><h3>Primeira execução</h3><p>Limite: <code>100</code><br>Índice P: <code>4</code><br>Índice Q: <code>7</code></p><p><strong>Resultado matemático esperado:</strong><br>11 × 19 = 209<br>Fatores: [11, 19]</p><p>Depois, tente <code>100000</code> como limite e escolha índices maiores.</p></article>
+        </aside>
+      </div>
+    </section>
+    <section class="wrap section" id="analise">
+      <div class="section-label">03 / INTERPRETAÇÃO</div><h2>O que esse experimento prova?</h2>
+      <div class="analysis-grid"><div class="panel"><h3>Multiplicar é eficiente</h3><p>O computador calcula rapidamente o produto de dois números. A medição usa uma média de repetições para diminuir o erro do relógio.</p></div><div class="panel"><h3>Fatorar exige busca</h3><p>A tentativa de divisão procura fatores possíveis até a raiz quadrada do número restante. Quanto maiores os primos escolhidos, maior pode ser o trabalho.</p></div></div>
+      <div class="explain"><strong>Distinção importante:</strong> este experimento mostra o problema de fatoração, não uma quebra de RSA real. Uma chave pública RSA envolve o par (N, e), e a chave privada envolve outros parâmetros. Chaves seguras usam primos aleatórios muito maiores e implementações criptográficas adequadas.</div>
+    </section>
+  </main>
+  <footer class="wrap footer"><span>CriptoPrimos • Atividade educacional — UC5 / Defesa Cibernética</span><a href="https://github.com/gabriel-silima/Atividade-A-Matem-tica-por-Tr-s-da-Seguran-a-Digital" target="_blank" rel="noopener noreferrer">Código no GitHub ↗</a></footer>
+</body>
+</html>

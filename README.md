@@ -2,6 +2,8 @@
 
 **Curso Técnico em Defesa Cibernética — SENAC | UC5: Aplicar técnicas de criptografia**
 
+**Autor — Aluno do Curso de Defesa Cibernética: Gabriel Silveira Lima**
+
 Laboratório de **números primos**, **Crivo de Eratóstenes** e **fatoração** com duas formas de execução:
 
 - **Página web interativa**: `index.html`, `style.css` e `app.js`, compatíveis com GitHub Pages; não exige instalação.
